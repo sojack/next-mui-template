@@ -4,8 +4,10 @@ import { ThemeProvider } from "@mui/material/styles";
 // note from the mui udemy course:
 // import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from "@mui/material/CssBaseline";
+import { Container, Box } from "@mui/material";
 import theme from "@/theme";
 import Header from "../components/Header";
+import Copyright from "../components/Copyright";
 
 export default function RootLayout(props) {
   return (
@@ -16,7 +18,20 @@ export default function RootLayout(props) {
             {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
             <CssBaseline />
             <Header />
-            {props.children}
+            <Container maxWidth="lg">
+              <Box
+                sx={{
+                  my: 4,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {props.children}
+              </Box>
+            </Container>
+            <Copyright />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

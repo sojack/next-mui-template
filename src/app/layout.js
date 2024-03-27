@@ -26,6 +26,7 @@ export default function RootLayout(props) {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
+                  minHeight: "100vh",
                 }}
               >
                 {props.children}

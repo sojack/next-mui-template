@@ -5,6 +5,8 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import styles from "./Header.module.css";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -19,10 +21,21 @@ function ElevationScroll(props) {
 
 function Header() {
   const [value, setValue] = React.useState(0);
+  // console.log("VALUE: " + value);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    console.log("set value");
+  const handleChange = (event, nvalue) => {
+    setValue(nvalue);
+    console.log("newValue" + " " + nvalue);
+    console.log("value" + " " + value);
+  };
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   React.useEffect(() => {
@@ -39,7 +52,7 @@ function Header() {
       setValue(3);
       console.log("effect 3");
     }
-  }, [value]);
+  }, []);
 
   return (
     <>
@@ -60,33 +73,56 @@ function Header() {
               aria-label="basic tabs example"
             >
               <Tab
+                value={0}
                 component={Link}
                 className={styles.tabs}
                 label="Home"
                 href="/"
               />
               <Tab
+                value={1}
                 component={Link}
                 className={styles.tabs}
                 label="About"
                 href="/about"
               />
               <Tab
+                value={2}
                 component={Link}
                 className={styles.tabs}
+                onClick={handleClick}
                 label="Services"
                 href="/service"
               />
               <Tab
+                value={3}
                 component={Link}
                 className={styles.tabs}
                 label="Contact"
                 href="/contact"
               />
             </Tabs>
-            <Button variant="contained" color="secondary">
-              map
+            <Button
+              variant="contained"
+              color="secondary"
+              component={Link}
+              href="/about"
+            >
+              About
             </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

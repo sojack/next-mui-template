@@ -1,0 +1,14 @@
+.test{
+    color:red;
+font-size: 1rem;
+}
+.tab{
+    margin:auto;
+}
+.tabs{
+    color:#444;
+    margin-right: 1rem;
+    text-transform: none;
+    font-weight: bold;
+    letter-spacing: .1rem;
+}

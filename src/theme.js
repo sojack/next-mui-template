@@ -8,13 +8,20 @@ const roboto = Roboto({
   display: "swap",
 });
 
+const yellow = "#F5A800";
+const red = "#DB1B16";
+
 const theme = createTheme({
   palette: {
+    common: {
+      yellow: `${yellow}`,
+      red: `${red}`,
+    },
     primary: {
-      main: "#F5A800",
+      main: `${yellow}`,
     },
     secondary: {
-      main: "#DB1B16",
+      main: `${red}`,
     },
   },
   // palette: {
